@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .dice-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        img {
+            width: 200px;
+        }
+
+        button {
+            background-color: #B156FE;
+            padding: 8px 18px;
+            font-size: 20px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dice-container">
+
+        <img src="./img/1.png" alt="Dice" id="img">
+
+        <button onclick="shuffle()">Shuffle</button>
+    </div>
+    </div>
+
+    <script>
+        
+
+        function shuffle() {
+
+            var image = document.getElementById("img");
+            var dice = Math.ceil(Math.random() * 6);
+
+            image.setAttribute("src",)
+
+            console.log(dice);
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
