@@ -16,7 +16,8 @@
             gap: 20px;
         }
 
-        .dice-container {
+        .dice-container,
+        .ageCalculator {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -28,6 +29,35 @@
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
+        }
+
+        .ageCalculator {
+            background-color: #ffa502;
+        }
+        .age{
+            display: flex;
+            background-color: #000;
+            width: 100%;
+            height: 100px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+
+        }
+        .age input{
+            width: 180px;
+            height: 50px;
+            border: none;
+            border-radius: 5px;
+            padding: 0px 10px;
+            font-size: 15px;
+            margin: 0;
+        }
+        .age button{
+            width: 80px;
+            height: 50px;
+            border-radius: 5px;
+            margin-left: 5px;
         }
 
         img {
@@ -92,6 +122,7 @@
 <body>
 
     <div class="dice-container">
+        <h1>Dice Game</h1>
 
         <img src="./img/1.png" alt="Dice" id="img">
 
@@ -119,6 +150,17 @@
             <input type="text" id="password" readonly>
         </div>
     </div>
+    <div class="ageCalculator" id="ageCalculator">
+        <div class="age">
+
+            <input type="date" id="birthdayDate">
+            <button onclick="checkAge()">cheked</button>
+        </div>
+        <div id="ageResult">
+
+        </div>
+
+    </div>
     <script>
 
 
@@ -141,31 +183,87 @@
             image.setAttribute("src", "dice.gif");
         }
 
-        document.getElementById('generate').addEventListener('click', function () {
-            var length = document.getElementById('length').value;
-            var uppercase = document.getElementById('uppercase').checked;
-            var lowercase = document.getElementById('lowercase').checked;
-            var numbers = document.getElementById('numbers').checked;
-            var symbols = document.getElementById('symbols').checked;
+        // document.getElementById('generate').addEventListener('click', function () {
+        //     var length = document.getElementById('length').value;
+        //     var uppercase = document.getElementById('uppercase').checked;
+        //     var lowercase = document.getElementById('lowercase').checked;
+        //     var numbers = document.getElementById('numbers').checked;
+        //     var symbols = document.getElementById('symbols').checked;
 
-            document.getElementById('password').value = generatePassword(length, uppercase, lowercase, numbers, symbols);
-        });
-        function generatePassword(length, uppercase, lowercase, numbers, symbols) {
-            var charset = '';
-            var password = '';
+        //     document.getElementById('password').value = generatePassword(length, uppercase, lowercase, numbers, symbols);
+        // });
+        // function generatePassword(length, uppercase, lowercase, numbers, symbols) {
+        //     var charset = '';
+        //     var password = '';
 
-            if (uppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            if (lowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
-            if (numbers) charset += '0123456789';
-            if (symbols) charset += '!@#$%^&*()_+[]{}|;:,.<>?';
+        //     if (uppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        //     if (lowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
+        //     if (numbers) charset += '0123456789';
+        //     if (symbols) charset += '!@#$%^&*()_+[]{}|;:,.<>?';
 
-            for (var i = 0; i < length; i++) {
-                var randomIndex = Math.floor(Math.random() * charset.length);
-                password += charset.charAt(randomIndex);
+        //     for (var i = 0; i < length; i++) {
+        //         var randomIndex = Math.floor(Math.random() * charset.length);
+        //         password += charset.charAt(randomIndex);
+
+        //         // console.log(randomIndex);
+        //     }
+
+        //     return password;
+        // }
+
+
+
+        function checkAge() {
+            let birthdayDate = document.getElementById('birthdayDate').value;
+            let ageResult = document.getElementById("ageResult")
+
+            if (birthdayDate) {
+                let birthdayObj = new Date(birthdayDate);
+                let currentYear = new Date();
+
+
+                let Year = currentYear.getFullYear() - birthdayObj.getFullYear();
+                let month = currentYear.getMonth() - birthdayObj.getMonth();
+                let day = currentYear.getDate() - birthdayObj.getDate();
+                let time = currentYear.getTime() - birthdayObj.getTime();
+
+                let minutes = Math.floor(time / (1000 * 60));
+                let hours = Math.floor(time / (1000 * 60 * 60));
+                let seconds = Math.floor((time / 1000));
+                let days = Math.floor(time / (1000 * 60 * 60 * 24));
+
+                console.log(days)
+
+                if (day < 0) {
+                    month--;
+                    // Calculate the days in the birth month
+                    let daysInBirthMonth = new Date(currentYear.getFullYear(), currentYear.getMonth(), 0).getDate();
+
+                    // console.log(daysInBirthMonth)
+                    day += daysInBirthMonth;
+                    // console.log(day)
+                }
+
+
+                if (month < 0) {
+                    year--;
+                    month += 12;
+                }
+
+
+                console.log(typeof currentYear.getDate());
+                console.log(typeof birthdayObj.getDate());
+
+
+                ageResult.innerHTML = (`${Year} years ${month} months and ${day} days. </br> or ${Year * 12 + month} Months and ${day} days. </br> or ${days} Days </br> or ${hours} Hours </br> or ${minutes} Minutes </br> or ${seconds} seconds`)
             }
 
-            return password;
+
         }
+
+
+
+
 
     </script>
 
