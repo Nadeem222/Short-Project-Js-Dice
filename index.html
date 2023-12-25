@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body {
+        body{
             width: 100%;
+        }
+        .container {
+            width: 90%;
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             font-family: 'Roboto', sans-serif;
             gap: 20px;
+            flex-direction: column;
+            margin: 0 auto;
+            
+
         }
 
         .dice-container,
@@ -24,7 +30,7 @@
             flex-direction: column;
             gap: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 310px;
+            width: 100%;
             height: 480px;
             padding: 20px;
             background-color: #fff;
@@ -34,18 +40,21 @@
         .ageCalculator {
             background-color: #ffa502;
         }
-        .age{
+
+        .age {
             display: flex;
             background-color: #000;
-            width: 100%;
+            width: 50%;
             height: 100px;
             align-items: center;
             justify-content: center;
             border-radius: 5px;
+            padding: 0 20px;
 
         }
-        .age input{
-            width: 180px;
+
+        .age input {
+            width: 70%;
             height: 50px;
             border: none;
             border-radius: 5px;
@@ -53,11 +62,14 @@
             font-size: 15px;
             margin: 0;
         }
-        .age button{
-            width: 80px;
+
+        .age button {
+            width: 30%;
             height: 50px;
             border-radius: 5px;
             margin-left: 5px;
+            background-color: #fff;
+            color: #000;
         }
 
         img {
@@ -120,46 +132,50 @@
 </head>
 
 <body>
+    <div class="container">
 
-    <div class="dice-container">
-        <h1>Dice Game</h1>
 
-        <img src="./img/1.png" alt="Dice" id="img">
+        <h1>Javascript Short Projects </h1>
+        <div class="dice-container">
+            <h1>Dice Game</h1>
 
-        <button onclick="anim()">Shuffle</button>
-    </div>
-    <div class="password-con">
-        <h1>Password Generator</h1>
-        <div class="options">
-            <label for="length">Password Length:</label>
-            <input type="number" id="length" min="4" max="50" value="12">
+            <img src="./img/1.png" alt="Dice" id="img">
 
-            <label for="uppercase">Include Uppercase:</label>
-            <input type="checkbox" id="uppercase" checked>
-
-            <label for="lowercase">Include Lowercase:</label>
-            <input type="checkbox" id="lowercase" checked>
-
-            <label for="numbers">Include Numbers:</label>
-            <input type="checkbox" id="numbers" checked>
-
-            <label for="symbols">Include Symbols:</label>
-            <input type="checkbox" id="symbols" checked>
-
-            <button id="generate">Generate Password</button>
-            <input type="text" id="password" readonly>
+            <button onclick="anim()">Shuffle</button>
         </div>
-    </div>
-    <div class="ageCalculator" id="ageCalculator">
-        <div class="age">
+        <div class="password-con">
+            <h1>Password Generator</h1>
+            <div class="options">
+                <label for="length">Password Length:</label>
+                <input type="number" id="length" min="4" max="50" value="12">
 
-            <input type="date" id="birthdayDate">
-            <button onclick="checkAge()">cheked</button>
+                <label for="uppercase">Include Uppercase:</label>
+                <input type="checkbox" id="uppercase" checked>
+
+                <label for="lowercase">Include Lowercase:</label>
+                <input type="checkbox" id="lowercase" checked>
+
+                <label for="numbers">Include Numbers:</label>
+                <input type="checkbox" id="numbers" checked>
+
+                <label for="symbols">Include Symbols:</label>
+                <input type="checkbox" id="symbols" checked>
+
+                <button id="generate">Generate Password</button>
+                <input type="text" id="password" readonly>
+            </div>
         </div>
-        <div id="ageResult">
+        <div class="ageCalculator" id="ageCalculator">
+            <div class="age">
+
+                <input type="date" id="birthdayDate">
+                <button onclick="checkAge()">calculate</button>
+            </div>
+            <div id="ageResult">
+
+            </div>
 
         </div>
-
     </div>
     <script>
 
